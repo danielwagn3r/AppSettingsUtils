@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://drewnoakes.com/code/util/app-settings-util/</licenseUrl>
+    <projectUrl>https://drewnoakes.com/code/util/app-settings-util/</projectUrl>
+    <iconUrl>https://drewnoakes.com/favicon.ico</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Easily read application setting values in a variety of types, specifying default values if necessary.</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>ConfigurationManager AppSettings Utiltity</tags>
+  </metadata>
+</package>
