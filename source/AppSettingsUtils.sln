@@ -8,9 +8,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppSettingsUtils.UnitTests", "AppSettingsUtils.UnitTests\AppSettingsUtils.UnitTests.csproj", "{C0B7979B-9FB1-4529-B632-26963BD85491}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D3E10072-F9F2-437D-99EC-F995005090CD}"
-	ProjectSection(SolutionItems) = preProject
-		README.md = README.md
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
