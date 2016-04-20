@@ -34,7 +34,7 @@ namespace AppSettingsUtils
         /// </returns>
         public static string GetString(string keyName, string defaultValue = null)
         {
-            string str = ConfigurationManager.AppSettings[keyName];
+            var str = ConfigurationManager.AppSettings[keyName];
             if (string.IsNullOrWhiteSpace(str))
             {
                 if (defaultValue == null)
@@ -78,7 +78,7 @@ namespace AppSettingsUtils
         /// </returns>
         public static int GetInt(string keyName, int defaultValue)
         {
-            string str = ConfigurationManager.AppSettings[keyName];
+            var str = ConfigurationManager.AppSettings[keyName];
             int value;
             if (!int.TryParse(str, out value))
             {
@@ -117,7 +117,7 @@ namespace AppSettingsUtils
         /// </returns>
         public static short GetShort(string keyName, short defaultValue)
         {
-            string str = ConfigurationManager.AppSettings[keyName];
+            var str = ConfigurationManager.AppSettings[keyName];
             short value;
             if (!short.TryParse(str, out value))
             {
@@ -155,7 +155,7 @@ namespace AppSettingsUtils
         /// </returns>
         public static double GetDouble(string keyName, double defaultValue)
         {
-            string str = ConfigurationManager.AppSettings[keyName];
+            var str = ConfigurationManager.AppSettings[keyName];
             double value;
             if (!double.TryParse(str, out value))
             {
@@ -193,7 +193,7 @@ namespace AppSettingsUtils
         /// </returns>
         public static bool GetBool(string keyName, bool defaultValue)
         {
-            string str = ConfigurationManager.AppSettings[keyName];
+            var str = ConfigurationManager.AppSettings[keyName];
             bool result;
             if (bool.TryParse(str, out result))
             {
@@ -213,7 +213,7 @@ namespace AppSettingsUtils
         /// <returns>True if the key exists, otherwise false.</returns>
         public static bool TryGetBool(string keyName, out bool value)
         {
-            string str = ConfigurationManager.AppSettings[keyName];
+            var str = ConfigurationManager.AppSettings[keyName];
             return bool.TryParse(str, out value);
         }
 
@@ -294,6 +294,31 @@ namespace AppSettingsUtils
         /// <summary>
         /// </summary>
         /// <param name="keyName">The name of the key, as specified in application config.</param>
+        /// <returns>The value in the config file as a TimeSpan.</returns>
+        /// <exception cref="ConfigurationErrorsException">The value is not specified or cannot be parsed as a double.</exception>
+        public static TimeSpan GetDays(string keyName)
+        {
+            return TimeSpan.FromDays(GetDouble(keyName));
+        }
+
+        /// <summary>
+        ///     If the value is not present or is blank,
+        ///     the <paramref name="defaultDays" /> is returned.
+        /// </summary>
+        /// <param name="keyName">The name of the key, as specified in application config.</param>
+        /// <param name="defaultDays"></param>
+        /// <returns>
+        ///     The value in the config file as a TimeSpan, or <paramref name="defaultDays" /> if the config value does not
+        ///     exist or is blank.
+        /// </returns>
+        public static TimeSpan GetDays(string keyName, double defaultDays)
+        {
+            return TimeSpan.FromDays(GetDouble(keyName, defaultDays));
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="keyName">The name of the key, as specified in application config.</param>
         /// <returns>The CSV value in the config file, split into its components and returned as a string array.</returns>
         public static string[] GetCsv(string keyName)
         {
@@ -331,9 +356,9 @@ namespace AppSettingsUtils
         /// </returns>
         public static Color GetColor(string keyName, Color defaultValue)
         {
-            string str = ConfigurationManager.AppSettings[keyName];
+            var str = ConfigurationManager.AppSettings[keyName];
 
-            Color color = defaultValue;
+            var color = defaultValue;
             if (str != null)
             {
                 color = Color.FromName(str);
@@ -403,7 +428,7 @@ namespace AppSettingsUtils
             </configuration>
             */
 
-            ConnectionStringSettings connStr = ConfigurationManager.ConnectionStrings[keyName];
+            var connStr = ConfigurationManager.ConnectionStrings[keyName];
             if (connStr == null)
             {
                 throw new ConfigurationErrorsException($"No connection string found for key: {keyName}");
