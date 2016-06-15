@@ -18,33 +18,33 @@ namespace AppSettingsUtils
         /// <summary>
         ///     Gets the configuration value for the specified key.  If the value is not present or is blank,
         ///     an exception is thrown.
+        /// </summary>
+        /// <param name="keyName">The name of the key, as specified in application config.</param>
+        /// <exception cref="ConfigurationErrorsException">The value is not specified, or is blank.</exception>
+        /// <returns>The value in the config file.</returns>
+        public static string GetString(string keyName)
+        {
+            var str = ConfigurationManager.AppSettings[keyName];
+            if (str == null || str.Trim().Length == 0)
+                throw new ConfigurationErrorsException($"No application setting available for key: {keyName}");
+            return str;
+        }
+
+        /// <summary>
         ///     Gets the configuration value for the specified key.  If the value is not present or is blank,
-        ///     the <paramref name="defaultValue" /> is returned, if no <paramref name="defaultValue" /> is
-        ///     specified an exception is thrown.
+        ///     the <paramref name="defaultValue" /> is returned.
         /// </summary>
         /// <param name="keyName">The name of the key, as specified in application config.</param>
         /// <param name="defaultValue"></param>
-        /// <exception cref="ConfigurationErrorsException">
-        ///     The value is not specified, or is blank and no defaultValue is
-        ///     specified.
-        /// </exception>
         /// <returns>
         ///     The value in the config file, or <paramref name="defaultValue" /> if the config value does not exist or is
         ///     blank.
         /// </returns>
-        public static string GetString(string keyName, string defaultValue = null)
+        public static string GetString(string keyName, string defaultValue)
         {
             var str = ConfigurationManager.AppSettings[keyName];
-            if (string.IsNullOrWhiteSpace(str))
-            {
-                if (defaultValue == null)
-                {
-                    throw new ConfigurationErrorsException($"No application setting available for key: {keyName}");
-                }
-
+            if (str == null || str.Trim().Length == 0)
                 return defaultValue;
-            }
-
             return str;
         }
 
@@ -388,12 +388,12 @@ namespace AppSettingsUtils
             var value = GetString(keyName);
             try
             {
-                return (T) Enum.Parse(typeof (T), value, true);
+                return (T) Enum.Parse(typeof(T), value, true);
             }
             catch (ArgumentException ex)
             {
                 string message =
-                    $"Configuration key '{keyName}' has value '{value}' that could not be parsed as a member of the {typeof (T).Name} enum type.";
+                    $"Configuration key '{keyName}' has value '{value}' that could not be parsed as a member of the {typeof(T).Name} enum type.";
                 throw new ConfigurationErrorsException(message, ex);
             }
         }
