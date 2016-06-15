@@ -294,6 +294,31 @@ namespace AppSettingsUtils
         /// <summary>
         /// </summary>
         /// <param name="keyName">The name of the key, as specified in application config.</param>
+        /// <returns>The value in the config file as a TimeSpan.</returns>
+        /// <exception cref="ConfigurationErrorsException">The value is not specified or cannot be parsed as a double.</exception>
+        public static TimeSpan GetDays(string keyName)
+        {
+            return TimeSpan.FromDays(GetDouble(keyName));
+        }
+
+        /// <summary>
+        ///     If the value is not present or is blank,
+        ///     the <paramref name="defaultDays" /> is returned.
+        /// </summary>
+        /// <param name="keyName">The name of the key, as specified in application config.</param>
+        /// <param name="defaultDays"></param>
+        /// <returns>
+        ///     The value in the config file as a TimeSpan, or <paramref name="defaultDays" /> if the config value does not
+        ///     exist or is blank.
+        /// </returns>
+        public static TimeSpan GetDays(string keyName, double defaultDays)
+        {
+            return TimeSpan.FromDays(GetDouble(keyName, defaultDays));
+        }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="keyName">The name of the key, as specified in application config.</param>
         /// <returns>The CSV value in the config file, split into its components and returned as a string array.</returns>
         public static string[] GetCsv(string keyName)
         {
@@ -363,12 +388,12 @@ namespace AppSettingsUtils
             var value = GetString(keyName);
             try
             {
-                return (T) Enum.Parse(typeof(T), value, true);
+                return (T) Enum.Parse(typeof (T), value, true);
             }
             catch (ArgumentException ex)
             {
                 string message =
-                    $"Configuration key '{keyName}' has value '{value}' that could not be parsed as a member of the {typeof(T).Name} enum type.";
+                    $"Configuration key '{keyName}' has value '{value}' that could not be parsed as a member of the {typeof (T).Name} enum type.";
                 throw new ConfigurationErrorsException(message, ex);
             }
         }

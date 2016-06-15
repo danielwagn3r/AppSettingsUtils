@@ -2,6 +2,7 @@
 using System.Collections.Specialized;
 using System.Configuration;
 using System.Configuration.Fakes;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using FluentAssertions;
 using Microsoft.QualityTools.Testing.Fakes;
@@ -13,8 +14,13 @@ namespace AppSettingsUtils.UnitTests
     ///     Summary description for AppSettingsUtilsTests
     /// </summary>
     [TestClass]
+    [ExcludeFromCodeCoverage]
     public class AppSettingsUtilsTests
     {
+        /// <summary>
+        ///     Gets or sets the test context which provides
+        ///     information about and functionality for the current test run.
+        /// </summary>
         public TestContext TestContext { get; set; }
 
         [TestMethod]
@@ -694,6 +700,155 @@ namespace AppSettingsUtils.UnitTests
 
                 // Assert
                 actualReturnValue.Should().Be(expectedReturnValue);
+            }
+        }
+
+        [TestMethod]
+        public void TestGetDaysWithValidValue()
+        {
+            const string keyName = "foo";
+            var expectedResult = new TimeSpan(730, 0, 0, 0);
+
+            // Arrange
+            using (ShimsContext.Create())
+            {
+                ShimConfigurationManager.AppSettingsGet = () =>
+                {
+                    var values = new NameValueCollection();
+                    values.Add(keyName, expectedResult.TotalDays.ToString());
+
+                    return values;
+                };
+
+                // Act
+                var actualResult = AppSettingsUtil.GetDays(keyName);
+
+                // Assert
+                actualResult.Should().Be(expectedResult);
+            }
+        }
+
+        [TestMethod]
+        public void TestGetDaysWithInvalidValue()
+        {
+            const string keyName = "foo";
+
+            // Arrange
+            using (ShimsContext.Create())
+            {
+                ShimConfigurationManager.AppSettingsGet = () =>
+                {
+                    var values = new NameValueCollection();
+                    values.Add(keyName, "bar");
+
+                    return values;
+                };
+
+                // Act
+                Action act = () => AppSettingsUtil.GetDays(keyName);
+
+                // Assert
+                act.ShouldThrow<ConfigurationErrorsException>();
+            }
+        }
+
+        [TestMethod]
+        public void TestGetDaysWithoutValue()
+        {
+            const string keyName = "foo";
+
+            // Arrange
+            using (ShimsContext.Create())
+            {
+                ShimConfigurationManager.AppSettingsGet = () =>
+                {
+                    var values = new NameValueCollection();
+
+                    return values;
+                };
+
+                // Act
+                Action act = () => AppSettingsUtil.GetDays(keyName);
+
+                // Assert
+                act.ShouldThrow<ConfigurationErrorsException>();
+            }
+        }
+
+        [TestMethod]
+        public void TestGetDaysDefaultWithValidValue()
+        {
+            const string keyName = "foo";
+            var defaultValue = new TimeSpan(365, 0, 0, 0);
+            var expectedResult = new TimeSpan(730, 0, 0, 0);
+
+            // Arrange
+            using (ShimsContext.Create())
+            {
+                ShimConfigurationManager.AppSettingsGet = () =>
+                {
+                    var values = new NameValueCollection();
+                    values.Add(keyName, expectedResult.TotalDays.ToString());
+
+                    return values;
+                };
+
+                // Act
+                var actualResult = AppSettingsUtil.GetDays(keyName, defaultValue.TotalDays);
+
+                // Assert
+                actualResult.Should().Be(expectedResult);
+            }
+        }
+
+        [TestMethod]
+        public void TestGetDaysDefaultWithInvalidValue()
+        {
+            const string keyName = "foo";
+            var defaultValue = new TimeSpan(365, 0, 0, 0);
+            var expectedResult = defaultValue;
+
+            // Arrange
+            using (ShimsContext.Create())
+            {
+                ShimConfigurationManager.AppSettingsGet = () =>
+                {
+                    var values = new NameValueCollection();
+                    values.Add(keyName, "bar");
+
+                    return values;
+                };
+
+                // Act
+                var actualResult = AppSettingsUtil.GetDays(keyName, defaultValue.TotalDays);
+
+                // Assert
+                actualResult.Should().Be(expectedResult);
+            }
+        }
+
+        [TestMethod]
+        public void TestGetDaysDefaultWithoutValue()
+        {
+            const string keyName = "foo";
+            var defaultValue = new TimeSpan(365, 0, 0, 0);
+            var expectedResult = defaultValue;
+
+            // Arrange
+            using (ShimsContext.Create())
+            {
+                ShimConfigurationManager.AppSettingsGet = () =>
+                {
+                    var values = new NameValueCollection();
+
+                    return values;
+                };
+
+                // Act
+                var actualResult = AppSettingsUtil.GetDays(keyName, defaultValue.TotalDays);
+
+                // Assert
+                actualResult.Should().Be(expectedResult);
             }
         }
 
