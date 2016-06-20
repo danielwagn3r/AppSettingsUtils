@@ -10,8 +10,8 @@
     <projectUrl>https://drewnoakes.com/code/util/app-settings-util/</projectUrl>
     <iconUrl>https://drewnoakes.com/favicon.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Easily read application setting values in a variety of types, specifying default values if necessary.</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <description>Reading a setting from App.config or Web.config is a pretty common task. Here's a class that makes this loads easier: AppSettingsUtil Easily read application setting values in a variety of types, specifying default values if necessary.</description>
+    <releaseNotes>Initial nuget.org release.</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>ConfigurationManager System.Configuration AppSettings Utiltity</tags>
   </metadata>
