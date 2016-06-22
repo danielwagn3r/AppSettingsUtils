@@ -6,8 +6,8 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>https://drewnoakes.com/code/util/app-settings-util/</licenseUrl>
-    <projectUrl>https://drewnoakes.com/code/util/app-settings-util/</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/kwaxi/AppSettingsUtils/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/kwaxi/AppSettingsUtils</projectUrl>
     <iconUrl>https://drewnoakes.com/favicon.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Reading a setting from App.config or Web.config is a pretty common task. Here's a class that makes this loads easier: AppSettingsUtil Easily read application setting values in a variety of types, specifying default values if necessary.</description>
