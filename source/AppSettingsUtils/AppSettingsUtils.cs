@@ -25,7 +25,7 @@ namespace AppSettingsUtils
         public static string GetString(string keyName)
         {
             var str = ConfigurationManager.AppSettings[keyName];
-            if (str == null || str.Trim().Length == 0)
+            if ((str == null) || (str.Trim().Length == 0))
                 throw new ConfigurationErrorsException($"No application setting available for key: {keyName}");
             return str;
         }
@@ -43,9 +43,44 @@ namespace AppSettingsUtils
         public static string GetString(string keyName, string defaultValue)
         {
             var str = ConfigurationManager.AppSettings[keyName];
-            if (str == null || str.Trim().Length == 0)
+            if ((str == null) || (str.Trim().Length == 0))
                 return defaultValue;
             return str;
+        }
+
+        /// <summary>
+        ///     Gets the configuration value for the specified key.  If the value is not present or is blank,
+        ///     an exception is thrown.
+        /// </summary>
+        /// <param name="keyName">The name of the key, as specified in application config.</param>
+        /// <exception cref="ConfigurationErrorsException">The value is not specified, or is blank.</exception>
+        /// <returns>The value in the config file.</returns>
+        public static Uri GetUri(string keyName)
+        {
+            var str = ConfigurationManager.AppSettings[keyName];
+            if ((str == null) || (str.Trim().Length == 0))
+                throw new ConfigurationErrorsException($"No application setting available for key: {keyName}");
+            var uri = new Uri(str);
+            return uri;
+        }
+
+        /// <summary>
+        ///     Gets the configuration value for the specified key.  If the value is not present or is blank,
+        ///     the <paramref name="defaultValue" /> is returned.
+        /// </summary>
+        /// <param name="keyName">The name of the key, as specified in application config.</param>
+        /// <param name="defaultValue"></param>
+        /// <returns>
+        ///     The value in the config file, or <paramref name="defaultValue" /> if the config value does not exist or is
+        ///     blank.
+        /// </returns>
+        public static Uri GetUri(string keyName, string defaultValue)
+        {
+            var str = ConfigurationManager.AppSettings[keyName];
+            if ((str == null) || (str.Trim().Length == 0))
+                str = defaultValue;
+            var uri = new Uri(str);
+            return uri;
         }
 
         /// <summary>
@@ -81,9 +116,7 @@ namespace AppSettingsUtils
             var str = ConfigurationManager.AppSettings[keyName];
             int value;
             if (!int.TryParse(str, out value))
-            {
                 value = defaultValue;
-            }
             return value;
         }
 
@@ -120,9 +153,7 @@ namespace AppSettingsUtils
             var str = ConfigurationManager.AppSettings[keyName];
             short value;
             if (!short.TryParse(str, out value))
-            {
                 value = defaultValue;
-            }
             return value;
         }
 
@@ -158,9 +189,7 @@ namespace AppSettingsUtils
             var str = ConfigurationManager.AppSettings[keyName];
             double value;
             if (!double.TryParse(str, out value))
-            {
                 value = defaultValue;
-            }
             return value;
         }
 
@@ -196,9 +225,7 @@ namespace AppSettingsUtils
             var str = ConfigurationManager.AppSettings[keyName];
             bool result;
             if (bool.TryParse(str, out result))
-            {
                 return result;
-            }
             return defaultValue;
         }
 
@@ -337,10 +364,8 @@ namespace AppSettingsUtils
         {
             var path = GetString(keyName);
             if (!File.Exists(path))
-            {
                 throw new ConfigurationErrorsException(
                     $"Configuration key '{keyName}' holds a non-existant file path: {path}");
-            }
             return path;
         }
 
@@ -363,9 +388,7 @@ namespace AppSettingsUtils
             {
                 color = Color.FromName(str);
                 if (color.ToArgb() == 0)
-                {
                     return defaultValue;
-                }
             }
 
             return color;
@@ -430,9 +453,7 @@ namespace AppSettingsUtils
 
             var connStr = ConfigurationManager.ConnectionStrings[keyName];
             if (connStr == null)
-            {
                 throw new ConfigurationErrorsException($"No connection string found for key: {keyName}");
-            }
             return connStr.ConnectionString;
         }
 

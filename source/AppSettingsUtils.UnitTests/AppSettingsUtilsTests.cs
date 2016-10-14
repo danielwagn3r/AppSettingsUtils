@@ -17,30 +17,25 @@ namespace AppSettingsUtils.UnitTests
     [ExcludeFromCodeCoverage]
     public class AppSettingsUtilsTests
     {
-        /// <summary>
-        ///     Gets or sets the test context which provides
-        ///     information about and functionality for the current test run.
-        /// </summary>
-        public TestContext TestContext { get; set; }
+        private const string keyName = "foo";
 
         [TestMethod]
         public void TestGetString()
         {
-            const string key = "foo";
+            // Arrange
             const string expectedResult = "bar";
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
                 {
                     var values = new NameValueCollection();
-                    values.Add(key, expectedResult);
+                    values.Add(keyName, expectedResult);
 
                     return values;
                 };
                 // Act
-                var actualResult = AppSettingsUtil.GetString(key);
+                var actualResult = AppSettingsUtil.GetString(keyName);
 
                 // Assert
                 actualResult.Should().Be(expectedResult);
@@ -50,11 +45,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetStringWithDefault1()
         {
-            const string keyName = "foo";
+            // Arrange
             const string defaultValue = "default";
             const string expectedResult = "bar";
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -75,9 +69,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetStringWithDefault2()
         {
+            // Arrange
             const string expectedResult = "default";
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -87,7 +81,7 @@ namespace AppSettingsUtils.UnitTests
                     return values;
                 };
                 // Act
-                var actualResult = AppSettingsUtil.GetString("foo", expectedResult);
+                var actualResult = AppSettingsUtil.GetString(keyName, expectedResult);
 
                 // Assert
                 actualResult.Should().Be(expectedResult);
@@ -97,9 +91,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetStringWithoutDefault()
         {
+            // Arrange
             using (ShimsContext.Create())
             {
-                // Arrange
                 ShimConfigurationManager.AppSettingsGet = () =>
                 {
                     var values = new NameValueCollection();
@@ -108,7 +102,7 @@ namespace AppSettingsUtils.UnitTests
                 };
 
                 // Act
-                Action act = () => AppSettingsUtil.GetString("foo");
+                Action act = () => AppSettingsUtil.GetString(keyName);
 
                 // Assert
                 act.ShouldThrow<ConfigurationErrorsException>();
@@ -118,10 +112,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetDoubleValid()
         {
-            const string keyName = "foo";
+            // Arrange
             const double expectedResult = 730;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -143,8 +136,6 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetDoubleInvalid()
         {
-            const string keyName = "foo";
-
             // Arrange
             using (ShimsContext.Create())
             {
@@ -167,11 +158,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetDoubleWithDefault1()
         {
-            const string keyName = "foo";
+            // Arrange
             const double defaultValue = 666;
             const double expectedResult = 730;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -193,9 +183,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetDoubleWithDefault2()
         {
+            // Arrange
             const double expectedResult = 666;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -206,7 +196,7 @@ namespace AppSettingsUtils.UnitTests
                 };
 
                 // Act
-                var actualResult = AppSettingsUtil.GetDouble("foo", expectedResult);
+                var actualResult = AppSettingsUtil.GetDouble(keyName, expectedResult);
 
                 // Assert
                 actualResult.Should().Be(expectedResult);
@@ -227,7 +217,7 @@ namespace AppSettingsUtils.UnitTests
                 };
 
                 // Act
-                Action act = () => AppSettingsUtil.GetDouble("foo");
+                Action act = () => AppSettingsUtil.GetDouble(keyName);
 
                 // Assert
                 act.ShouldThrow<ConfigurationErrorsException>();
@@ -237,10 +227,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetIntValid()
         {
-            const string keyName = "foo";
+            // Arrange
             const int expectedResult = 730;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -262,8 +251,6 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetIntInvalid()
         {
-            const string keyName = "foo";
-
             // Arrange
             using (ShimsContext.Create())
             {
@@ -286,11 +273,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetIntWithDefault1()
         {
-            const string keyName = "foo";
+            // Arrange
             const int defaultValue = 666;
             const int expectedResult = 730;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -312,9 +298,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetIntWithDefault2()
         {
+            // Arrange
             const int expectedResult = 666;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -325,7 +311,7 @@ namespace AppSettingsUtils.UnitTests
                 };
 
                 // Act
-                var actualResult = AppSettingsUtil.GetInt("foo", expectedResult);
+                var actualResult = AppSettingsUtil.GetInt(keyName, expectedResult);
 
                 // Assert
                 actualResult.Should().Be(expectedResult);
@@ -335,9 +321,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetIntWithoutDefault()
         {
+            // Arrange
             using (ShimsContext.Create())
             {
-                // Arrange
                 ShimConfigurationManager.AppSettingsGet = () =>
                 {
                     var values = new NameValueCollection();
@@ -346,7 +332,7 @@ namespace AppSettingsUtils.UnitTests
                 };
 
                 // Act
-                Action act = () => AppSettingsUtil.GetInt("foo");
+                Action act = () => AppSettingsUtil.GetInt(keyName);
 
                 // Assert
                 act.ShouldThrow<ConfigurationErrorsException>();
@@ -356,10 +342,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetShortValid()
         {
-            const string keyName = "foo";
+            // Arrange
             const short expectedResult = 730;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -381,8 +366,6 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetShortInvalid()
         {
-            const string keyName = "foo";
-
             // Arrange
             using (ShimsContext.Create())
             {
@@ -405,11 +388,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetShortWithDefault1()
         {
-            const string keyName = "foo";
+            // Arrange
             const short defaultValue = 666;
             const short expectedResult = 730;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -431,9 +413,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetShortWithDefault2()
         {
+            // Arrange
             const short expectedResult = 666;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -444,7 +426,7 @@ namespace AppSettingsUtils.UnitTests
                 };
 
                 // Act
-                var actualResult = AppSettingsUtil.GetShort("foo", expectedResult);
+                var actualResult = AppSettingsUtil.GetShort(keyName, expectedResult);
 
                 // Assert
                 actualResult.Should().Be(expectedResult);
@@ -454,9 +436,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetShortWithoutDefault()
         {
+            // Arrange
             using (ShimsContext.Create())
             {
-                // Arrange
                 ShimConfigurationManager.AppSettingsGet = () =>
                 {
                     var values = new NameValueCollection();
@@ -465,7 +447,7 @@ namespace AppSettingsUtils.UnitTests
                 };
 
                 // Act
-                Action act = () => AppSettingsUtil.GetShort("foo");
+                Action act = () => AppSettingsUtil.GetShort(keyName);
 
                 // Assert
                 act.ShouldThrow<ConfigurationErrorsException>();
@@ -475,10 +457,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetBoolWithValidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             const bool expectedResult = true;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -500,8 +481,6 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetBoolWithInvalidValue()
         {
-            const string keyName = "foo";
-
             // Arrange
             using (ShimsContext.Create())
             {
@@ -524,8 +503,6 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetBoolWithoutValue()
         {
-            const string keyName = "foo";
-
             // Arrange
             using (ShimsContext.Create())
             {
@@ -547,11 +524,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetBoolDefaultWithValidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             const bool defaultValue = false;
             const bool expectedResult = true;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -573,11 +549,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetBoolDefaultWithInvalidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             const bool defaultValue = false;
             const bool expectedResult = defaultValue;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -599,11 +574,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetBoolDefaultWithoutValue()
         {
-            const string keyName = "foo";
+            // Arrange
             const bool defaultValue = false;
             const bool expectedResult = defaultValue;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -624,13 +598,11 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestTryGetBoolWithValidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             const bool expectedValue = true;
             const bool expectedReturnValue = true;
             bool actualValue;
 
-
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -653,12 +625,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestTryGetBoolWithInvalidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             const bool expectedReturnValue = false;
             bool actualValue;
 
-
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -680,12 +650,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestTryGetBoolWithNoValue()
         {
-            const string keyName = "foo";
+            // Arrange
             const bool expectedReturnValue = false;
             bool actualValue;
 
-
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -706,10 +674,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetDaysWithValidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var expectedResult = new TimeSpan(730, 0, 0, 0);
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -731,8 +698,6 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetDaysWithInvalidValue()
         {
-            const string keyName = "foo";
-
             // Arrange
             using (ShimsContext.Create())
             {
@@ -755,8 +720,6 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetDaysWithoutValue()
         {
-            const string keyName = "foo";
-
             // Arrange
             using (ShimsContext.Create())
             {
@@ -778,11 +741,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetDaysDefaultWithValidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var defaultValue = new TimeSpan(365, 0, 0, 0);
             var expectedResult = new TimeSpan(730, 0, 0, 0);
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -804,11 +766,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetDaysDefaultWithInvalidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var defaultValue = new TimeSpan(365, 0, 0, 0);
             var expectedResult = defaultValue;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -830,11 +791,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetDaysDefaultWithoutValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var defaultValue = new TimeSpan(365, 0, 0, 0);
             var expectedResult = defaultValue;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -855,10 +815,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetMinutesWithValidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var expectedResult = new TimeSpan(730, 0, 0, 0);
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -880,8 +839,6 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetMinutesWithInvalidValue()
         {
-            const string keyName = "foo";
-
             // Arrange
             using (ShimsContext.Create())
             {
@@ -904,8 +861,6 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetMinutesWithoutValue()
         {
-            const string keyName = "foo";
-
             // Arrange
             using (ShimsContext.Create())
             {
@@ -927,11 +882,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetMinutesDefaultWithValidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var defaultValue = new TimeSpan(365, 0, 0, 0);
             var expectedResult = new TimeSpan(730, 0, 0, 0);
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -953,11 +907,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetMinutesDefaultWithInvalidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var defaultValue = new TimeSpan(365, 0, 0, 0);
             var expectedResult = defaultValue;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -979,11 +932,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetMinutesDefaultWithoutValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var defaultValue = new TimeSpan(365, 0, 0, 0);
             var expectedResult = defaultValue;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -1004,10 +956,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetSecondsWithValidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var expectedResult = new TimeSpan(730, 0, 0, 0);
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -1029,8 +980,6 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetSecondsWithInvalidValue()
         {
-            const string keyName = "foo";
-
             // Arrange
             using (ShimsContext.Create())
             {
@@ -1053,8 +1002,6 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetSecondsWithoutValue()
         {
-            const string keyName = "foo";
-
             // Arrange
             using (ShimsContext.Create())
             {
@@ -1076,11 +1023,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetSecondsDefaultWithValidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var defaultValue = new TimeSpan(365, 0, 0, 0);
             var expectedResult = new TimeSpan(730, 0, 0, 0);
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -1102,11 +1048,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetSecondsDefaultWithInvalidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var defaultValue = new TimeSpan(365, 0, 0, 0);
             var expectedResult = defaultValue;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -1128,11 +1073,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetSecondsDefaultWithoutValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var defaultValue = new TimeSpan(365, 0, 0, 0);
             var expectedResult = defaultValue;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -1153,10 +1097,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetMillisecondsWithValidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var expectedResult = new TimeSpan(730, 0, 0, 0);
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -1178,8 +1121,6 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetMillisecondsWithInvalidValue()
         {
-            const string keyName = "foo";
-
             // Arrange
             using (ShimsContext.Create())
             {
@@ -1202,8 +1143,6 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetMillisecondsWithoutValue()
         {
-            const string keyName = "foo";
-
             // Arrange
             using (ShimsContext.Create())
             {
@@ -1225,11 +1164,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetMillisecondsDefaultWithValidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var defaultValue = new TimeSpan(365, 0, 0, 0);
             var expectedResult = new TimeSpan(730, 0, 0, 0);
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -1251,11 +1189,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetMillisecondsDefaultWithInvalidValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var defaultValue = new TimeSpan(365, 0, 0, 0);
             var expectedResult = defaultValue;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -1277,11 +1214,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetMillisecondsDefaultWithoutValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var defaultValue = new TimeSpan(365, 0, 0, 0);
             var expectedResult = defaultValue;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
@@ -1302,10 +1238,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetConnectionStringWithValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var expectedResult = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=bar";
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.ConnectionStringsGet = () =>
@@ -1327,8 +1262,6 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestGetConnectionStringWithoutValue()
         {
-            const string keyName = "foo";
-
             // Arrange
             using (ShimsContext.Create())
             {
@@ -1350,11 +1283,10 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestConnectionStringExistsWithValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=bar";
             var expectedResult = true;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.ConnectionStringsGet = () =>
@@ -1376,10 +1308,9 @@ namespace AppSettingsUtils.UnitTests
         [TestMethod]
         public void TestConnectionStringExistsWithoutValue()
         {
-            const string keyName = "foo";
+            // Arrange
             var expectedResult = false;
 
-            // Arrange
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.ConnectionStringsGet = () =>
@@ -1396,6 +1327,100 @@ namespace AppSettingsUtils.UnitTests
                 actualResult.Should().Be(expectedResult);
             }
         }
+
+        #region Tests for GetUri
+
+        [TestMethod]
+        public void TestGetUri()
+        {
+            // Arrange
+            const string expectedResult = "https://bar/";
+
+            using (ShimsContext.Create())
+            {
+                ShimConfigurationManager.AppSettingsGet = () =>
+                {
+                    var values = new NameValueCollection();
+                    values.Add(keyName, expectedResult);
+
+                    return values;
+                };
+                // Act
+                var actualResult = AppSettingsUtil.GetUri(keyName);
+
+                // Assert
+                actualResult.Should().Be(new Uri(expectedResult));
+            }
+        }
+
+        [TestMethod]
+        public void TestGetUriWithDefault1()
+        {
+            // Arrange
+            const string defaultValue = "https://default/";
+            const string expectedResult = "https://bar/";
+
+            using (ShimsContext.Create())
+            {
+                ShimConfigurationManager.AppSettingsGet = () =>
+                {
+                    var values = new NameValueCollection();
+                    values.Add(keyName, expectedResult);
+
+                    return values;
+                };
+                // Act
+                var actualResult = AppSettingsUtil.GetUri(keyName, defaultValue);
+
+                // Assert
+                actualResult.Should().Be(new Uri(expectedResult));
+            }
+        }
+
+        [TestMethod]
+        public void TestGetUriWithDefault2()
+        {
+            // Arrange
+            const string expectedResult = "https://default/";
+
+            using (ShimsContext.Create())
+            {
+                ShimConfigurationManager.AppSettingsGet = () =>
+                {
+                    var values = new NameValueCollection();
+
+                    return values;
+                };
+                // Act
+                var actualResult = AppSettingsUtil.GetUri(keyName, expectedResult);
+
+                // Assert
+                actualResult.Should().Be(new Uri(expectedResult));
+            }
+        }
+
+        [TestMethod]
+        public void TestGetUriWithoutDefault()
+        {
+            // Arrange
+            using (ShimsContext.Create())
+            {
+                ShimConfigurationManager.AppSettingsGet = () =>
+                {
+                    var values = new NameValueCollection();
+
+                    return values;
+                };
+
+                // Act
+                Action act = () => AppSettingsUtil.GetUri(keyName);
+
+                // Assert
+                act.ShouldThrow<ConfigurationErrorsException>();
+            }
+        }
+
+        #endregion
 
         #region Additional test attributes
 
