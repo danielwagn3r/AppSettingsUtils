@@ -365,7 +365,7 @@ namespace AppSettingsUtils
             var path = GetString(keyName);
             if (!File.Exists(path))
                 throw new ConfigurationErrorsException(
-                    $"Configuration key '{keyName}' holds a non-existant file path: {path}");
+                          $"Configuration key '{keyName}' holds a non-existant file path: {path}");
             return path;
         }
 

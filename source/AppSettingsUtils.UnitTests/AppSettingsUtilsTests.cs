@@ -28,12 +28,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult);
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult);
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
                 // Act
                 var actualResult = AppSettingsUtil.GetString(keyName);
 
@@ -52,12 +52,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult);
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult);
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
                 // Act
                 var actualResult = AppSettingsUtil.GetString(keyName, defaultValue);
 
@@ -75,11 +75,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
                 // Act
                 var actualResult = AppSettingsUtil.GetString(keyName, expectedResult);
 
@@ -95,11 +95,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetString(keyName);
@@ -118,12 +118,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetDouble(keyName);
@@ -140,12 +140,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, "bar");
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, "bar");
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetDouble(keyName);
@@ -165,12 +165,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetDouble(keyName, defaultValue);
@@ -189,11 +189,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetDouble(keyName, expectedResult);
@@ -210,11 +210,11 @@ namespace AppSettingsUtils.UnitTests
             {
                 // Arrange
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetDouble(keyName);
@@ -233,12 +233,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetInt(keyName);
@@ -255,12 +255,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, "bar");
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, "bar");
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetInt(keyName);
@@ -280,12 +280,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetInt(keyName, defaultValue);
@@ -304,11 +304,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetInt(keyName, expectedResult);
@@ -325,11 +325,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetInt(keyName);
@@ -348,12 +348,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetShort(keyName);
@@ -370,12 +370,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, "bar");
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, "bar");
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetShort(keyName);
@@ -395,12 +395,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetShort(keyName, defaultValue);
@@ -419,11 +419,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetShort(keyName, expectedResult);
@@ -440,11 +440,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetShort(keyName);
@@ -463,12 +463,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetBool(keyName);
@@ -485,12 +485,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, "bar");
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, "bar");
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetBool(keyName);
@@ -507,11 +507,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetBool(keyName);
@@ -531,12 +531,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.ToString(CultureInfo.InvariantCulture));
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetBool(keyName, defaultValue);
@@ -556,12 +556,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, "bar");
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, "bar");
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetBool(keyName, defaultValue);
@@ -581,11 +581,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetBool(keyName, defaultValue);
@@ -606,12 +606,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedValue.ToString(CultureInfo.InvariantCulture));
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedValue.ToString(CultureInfo.InvariantCulture));
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualReturnValue = AppSettingsUtil.TryGetBool(keyName, out actualValue);
@@ -632,12 +632,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, "bar");
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, "bar");
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualReturnValue = AppSettingsUtil.TryGetBool(keyName, out actualValue);
@@ -657,11 +657,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualReturnValue = AppSettingsUtil.TryGetBool(keyName, out actualValue);
@@ -680,12 +680,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.TotalDays.ToString());
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.TotalDays.ToString());
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetDays(keyName);
@@ -702,12 +702,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, "bar");
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, "bar");
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetDays(keyName);
@@ -724,11 +724,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetDays(keyName);
@@ -748,12 +748,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.TotalDays.ToString());
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.TotalDays.ToString());
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetDays(keyName, defaultValue.TotalDays);
@@ -773,12 +773,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, "bar");
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, "bar");
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetDays(keyName, defaultValue.TotalDays);
@@ -798,11 +798,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetDays(keyName, defaultValue.TotalDays);
@@ -821,12 +821,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.TotalMinutes.ToString());
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.TotalMinutes.ToString());
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetMinutes(keyName);
@@ -843,12 +843,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, "bar");
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, "bar");
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetMinutes(keyName);
@@ -865,11 +865,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetMinutes(keyName);
@@ -889,12 +889,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.TotalMinutes.ToString());
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.TotalMinutes.ToString());
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetMinutes(keyName, defaultValue.TotalMinutes);
@@ -914,12 +914,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, "bar");
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, "bar");
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetMinutes(keyName, defaultValue.TotalMinutes);
@@ -939,11 +939,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetMinutes(keyName, defaultValue.TotalMinutes);
@@ -962,12 +962,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.TotalSeconds.ToString());
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.TotalSeconds.ToString());
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetSeconds(keyName);
@@ -984,12 +984,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, "bar");
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, "bar");
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetSeconds(keyName);
@@ -1006,11 +1006,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetSeconds(keyName);
@@ -1030,12 +1030,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.TotalSeconds.ToString());
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.TotalSeconds.ToString());
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetSeconds(keyName, defaultValue.TotalSeconds);
@@ -1055,12 +1055,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, "bar");
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, "bar");
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetSeconds(keyName, defaultValue.TotalSeconds);
@@ -1080,11 +1080,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetSeconds(keyName, defaultValue.TotalSeconds);
@@ -1103,12 +1103,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.TotalMilliseconds.ToString());
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.TotalMilliseconds.ToString());
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetMilliseconds(keyName);
@@ -1125,12 +1125,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, "bar");
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, "bar");
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetMilliseconds(keyName);
@@ -1147,11 +1147,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetMilliseconds(keyName);
@@ -1171,12 +1171,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult.TotalMilliseconds.ToString());
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult.TotalMilliseconds.ToString());
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetMilliseconds(keyName, defaultValue.TotalMilliseconds);
@@ -1196,12 +1196,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, "bar");
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, "bar");
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetMilliseconds(keyName, defaultValue.TotalMilliseconds);
@@ -1221,11 +1221,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetMilliseconds(keyName, defaultValue.TotalMilliseconds);
@@ -1244,12 +1244,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.ConnectionStringsGet = () =>
-                {
-                    var values = new ConnectionStringSettingsCollection();
-                    values.Add(new ConnectionStringSettings(keyName, expectedResult));
+                                                                {
+                                                                    var values = new ConnectionStringSettingsCollection();
+                                                                    values.Add(new ConnectionStringSettings(keyName, expectedResult));
 
-                    return values;
-                };
+                                                                    return values;
+                                                                };
 
                 // Act
                 var actualResult = AppSettingsUtil.GetConnectionString(keyName);
@@ -1266,11 +1266,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.ConnectionStringsGet = () =>
-                {
-                    var values = new ConnectionStringSettingsCollection();
+                                                                {
+                                                                    var values = new ConnectionStringSettingsCollection();
 
-                    return values;
-                };
+                                                                    return values;
+                                                                };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetConnectionString(keyName);
@@ -1290,12 +1290,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.ConnectionStringsGet = () =>
-                {
-                    var values = new ConnectionStringSettingsCollection();
-                    values.Add(new ConnectionStringSettings(keyName, connectionString));
+                                                                {
+                                                                    var values = new ConnectionStringSettingsCollection();
+                                                                    values.Add(new ConnectionStringSettings(keyName, connectionString));
 
-                    return values;
-                };
+                                                                    return values;
+                                                                };
 
                 // Act
                 var actualResult = AppSettingsUtil.ConnectionStringExists(keyName);
@@ -1314,11 +1314,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.ConnectionStringsGet = () =>
-                {
-                    var values = new ConnectionStringSettingsCollection();
+                                                                {
+                                                                    var values = new ConnectionStringSettingsCollection();
 
-                    return values;
-                };
+                                                                    return values;
+                                                                };
 
                 // Act
                 var actualResult = AppSettingsUtil.ConnectionStringExists(keyName);
@@ -1339,12 +1339,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult);
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult);
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
                 // Act
                 var actualResult = AppSettingsUtil.GetUri(keyName);
 
@@ -1363,12 +1363,12 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
-                    values.Add(keyName, expectedResult);
+                                                          {
+                                                              var values = new NameValueCollection();
+                                                              values.Add(keyName, expectedResult);
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
                 // Act
                 var actualResult = AppSettingsUtil.GetUri(keyName, defaultValue);
 
@@ -1386,11 +1386,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
                 // Act
                 var actualResult = AppSettingsUtil.GetUri(keyName, expectedResult);
 
@@ -1406,11 +1406,11 @@ namespace AppSettingsUtils.UnitTests
             using (ShimsContext.Create())
             {
                 ShimConfigurationManager.AppSettingsGet = () =>
-                {
-                    var values = new NameValueCollection();
+                                                          {
+                                                              var values = new NameValueCollection();
 
-                    return values;
-                };
+                                                              return values;
+                                                          };
 
                 // Act
                 Action act = () => AppSettingsUtil.GetUri(keyName);
